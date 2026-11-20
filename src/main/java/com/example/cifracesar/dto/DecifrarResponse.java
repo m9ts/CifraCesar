@@ -1,4 +1,4 @@
-package com.segi.dto;
+package com.example.cifracesar.dto;
 
 public class DecifrarResponse {
 

@@ -1,17 +1,15 @@
-package com.segi.dto;
+package com.example.cifracesar.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class DecifrarRequest {
 
-    @NotBlank(message = "O texto cifrado é obrigatório!")
-    @Size(max = 2048, message = "O texto cifrado deve ter no máximo 255 caracteres!")
+    @NotBlank(message = "O texto claro é obrigatório!")
+    @Size(max = 255, message = "O texto claro deve ter no máximo 255 caracteres!")
     private String textoCifrado;
 
-    @NotBlank(message = "A chave é obrigatória!")
-    @Size(max = 255, message = "A chave deve ter no máximo 255 caracteres!")
-    private String chave;
+    private int deslocamento;
 
     public String getTextoCifrado() {
         return textoCifrado;
@@ -21,11 +19,11 @@ public class DecifrarRequest {
         this.textoCifrado = textoCifrado;
     }
 
-    public String getChave() {
-        return chave;
+    public int getDeslocamento() {
+        return deslocamento;
     }
 
-    public void setChave(String chave) {
-        this.chave = chave;
+    public void setDeslocamento(int deslocamento) {
+        this.deslocamento = deslocamento;
     }
 }

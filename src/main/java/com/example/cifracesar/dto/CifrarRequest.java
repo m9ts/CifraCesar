@@ -9,9 +9,7 @@ public class CifrarRequest {
     @Size(max = 255, message = "O texto claro deve ter no máximo 255 caracteres!")
     private String textoClaro;
 
-    @NotBlank(message = "A chave é obrigatória!")
-    @Size(max = 255, message = "A chave deve ter no máximo 255 caracteres!")
-    private String chave;
+    private int deslocamento;
 
     public String getTextoClaro() {
         return textoClaro;
@@ -21,11 +19,11 @@ public class CifrarRequest {
         this.textoClaro = textoClaro;
     }
 
-    public String getChave() {
-        return chave;
+    public int getDeslocamento() {
+        return deslocamento;
     }
 
-    public void setChave(String chave) {
-        this.chave = chave;
+    public void setDeslocamento(int deslocamento) {
+        this.deslocamento = deslocamento;
     }
 }

@@ -9,5 +9,4 @@ public class CifraCesarApplication {
     public static void main(String[] args) {
         SpringApplication.run(CifraCesarApplication.class, args);
     }
-
 }
