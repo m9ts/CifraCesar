@@ -2,6 +2,8 @@ package com.example.cifracesar.controller;
 
 import com.example.cifracesar.dto.CifrarRequest;
 import com.example.cifracesar.dto.CifrarResponse;
+import com.example.cifracesar.dto.DecifrarForcaBrutaRequest;
+import com.example.cifracesar.dto.DecifrarForcaBrutaResponse;
 import com.example.cifracesar.dto.DecifrarRequest;
 import com.example.cifracesar.dto.DecifrarResponse;
 import com.example.cifracesar.service.CifraService;
@@ -9,6 +11,8 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class CifraController {
@@ -32,7 +36,16 @@ public class CifraController {
     public DecifrarResponse decifrar(@Valid @RequestBody DecifrarRequest request) {
         String decifrado = service.decifrar(request.getTextoCifrado(), request.getDeslocamento()); // variavel vai receber o decifrar passando o texto cifrado e a chave do request
         DecifrarResponse response = new DecifrarResponse(); // vai criar um objeto de resposta
-        response.setTextoClaro(decifrado); // vai guaradar o texto claro (decifrado)
+        response.setTextoClaro(decifrado); // vai guardar o texto claro (decifrado)
         return response; // vai retornar o objeto de resposta com o texto decifrado
+    }
+
+    @PostMapping("/decifrarForcaBruta")
+    public DecifrarForcaBrutaResponse decifrarForcaBruta(@Valid @RequestBody DecifrarForcaBrutaRequest request) {
+        CifraService.Candidato melhor = service.forcaBruta(request.getTextoCifrado(), List.of(), 1).get(0);
+
+        DecifrarForcaBrutaResponse response = new DecifrarForcaBrutaResponse();
+        response.setTextoClaro(melhor.textoClaro());
+        return response;
     }
 }

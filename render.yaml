@@ -1,0 +1,11 @@
+# Blueprint do Render: cria o serviço web a partir deste repositório.
+# No painel: New > Blueprint > selecionar o repositório m9ts/CifraCesar.
+services:
+  - type: web
+    name: cifra-cesar-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /v3/api-docs

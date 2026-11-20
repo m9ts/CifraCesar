@@ -1,15 +1,17 @@
 package com.example.cifracesar.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class DecifrarRequest {
 
-    @NotBlank(message = "O texto claro é obrigatório!")
-    @Size(max = 255, message = "O texto claro deve ter no máximo 255 caracteres!")
+    @NotBlank(message = "O texto cifrado é obrigatório!")
+    @Size(max = 255, message = "O texto cifrado deve ter no máximo 255 caracteres!")
     private String textoCifrado;
 
-    private int deslocamento;
+    @NotNull(message = "O deslocamento é obrigatório!")
+    private Integer deslocamento;
 
     public String getTextoCifrado() {
         return textoCifrado;
@@ -19,11 +21,11 @@ public class DecifrarRequest {
         this.textoCifrado = textoCifrado;
     }
 
-    public int getDeslocamento() {
+    public Integer getDeslocamento() {
         return deslocamento;
     }
 
-    public void setDeslocamento(int deslocamento) {
+    public void setDeslocamento(Integer deslocamento) {
         this.deslocamento = deslocamento;
     }
 }
